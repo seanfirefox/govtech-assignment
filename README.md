@@ -15,8 +15,8 @@ Ensure you have the following installed:
 
 1. Clone the repository and navigate to the project directory:
    ```bash
-   git clone https://your-repository-url.git
-   cd your-repository-directory
+   git clone https://github.com/seanfirefox/govtech-assignment.git
+   cd champions
 
 2. Run the following command to build and start the services:
     ```bash
