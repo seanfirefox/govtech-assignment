@@ -21,3 +21,7 @@ Ensure you have the following installed:
 2. Run the following command to build and start the services:
     ```bash
     sudo docker-compose up --build
+
+### LocalHost Ports
+Frontend: http://localhost:3000/
+Backend: http://localhost:8080/
