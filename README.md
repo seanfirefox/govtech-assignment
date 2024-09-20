@@ -24,4 +24,5 @@ Ensure you have the following installed:
 
 ### LocalHost Ports
 Frontend: http://localhost:3000/
+
 Backend: http://localhost:8080/
