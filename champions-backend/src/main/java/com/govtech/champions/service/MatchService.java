@@ -7,12 +7,10 @@ import com.govtech.champions.repository.MatchRepository;
 import com.govtech.champions.repository.TeamRepository;
 import com.govtech.champions.utils.ParserUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -33,19 +31,19 @@ public class MatchService {
         }
         return matches.stream()
                 .map(match -> new MatchDTO(match.getId(), match.getTeamAName(), match.getTeamBName(), match.getGoalsA(), match.getGoalsB()))
-                .collect(Collectors.toList());
+                .toList();
     }
 
     private void processMatch(Match match) throws Exception {
         Optional<Team> teamAOpt = teamRepository.findByName(match.getTeamAName());
         Optional<Team> teamBOpt = teamRepository.findByName(match.getTeamBName());
 
-        if (!teamAOpt.isPresent()) {
+        if (teamAOpt.isEmpty()) {
             log.error("Team A not found: {}", match.getTeamAName());
             throw new Exception("Team A not found: " + match.getTeamAName());
         }
 
-        if (!teamBOpt.isPresent()) {
+        if (teamBOpt.isEmpty()) {
             log.error("Team B not found: {}", match.getTeamBName());
             throw new Exception("Team B not found: " + match.getTeamBName());
         }
@@ -103,7 +101,7 @@ public class MatchService {
     public List<MatchDTO> getAllMatches() {
         return matchRepository.findAll().stream()
                 .map(match -> new MatchDTO(match.getId(), match.getTeamAName(), match.getTeamBName(), match.getGoalsA(), match.getGoalsB()))
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public void deleteMatch(Long matchId) throws Exception {

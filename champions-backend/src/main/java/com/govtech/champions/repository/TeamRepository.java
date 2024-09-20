@@ -12,5 +12,4 @@ public interface TeamRepository extends JpaRepository<Team, String> {
     Optional<Team> findByName(String name);
     Optional<Team> findById(Long id);
     List<Team> findByGroupNumberOrderByTotalMatchPointsDescAlternateMatchPointsDescGoalsScoredDesc(int groupNumber);
-    void deleteByName(String name);
 }
