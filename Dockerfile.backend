@@ -1,0 +1,12 @@
+FROM openjdk:17-jdk-slim as builder
+WORKDIR /app
+COPY champions-backend/gradlew champions-backend/gradlew.bat champions-backend/build.gradle champions-backend/settings.gradle /app/
+COPY champions-backend/src /app/src
+COPY champions-backend/gradle /app/gradle
+RUN chmod +x gradlew
+RUN ./gradlew bootJar
+FROM openjdk:17-jdk-slim
+WORKDIR /app
+COPY --from=builder /app/build/libs/*.jar app.jar
+CMD ["java", "-jar", "/app/app.jar"]
+EXPOSE 8080

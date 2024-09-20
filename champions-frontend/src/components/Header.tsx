@@ -16,7 +16,7 @@ const Header: React.FC = () => {
     <Navbar bg="light" expand="lg">
       <Container>
         <LinkContainer to="/">
-          <Navbar.Brand>Team Manager</Navbar.Brand>
+          <Navbar.Brand>Champions</Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -34,10 +34,6 @@ const Header: React.FC = () => {
               <Nav.Link>Matches List</Nav.Link>
             </LinkContainer>
             <NavDropdown title="Rankings" id="rankings-dropdown">
-              <NavDropdown.Item onClick={() => navigate('/rankings')}>
-                All Groups
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
               {groups.map((group) => (
                 <NavDropdown.Item key={group} onClick={() => handleSelectGroup(group)}>
                   Group {group}
